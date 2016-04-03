@@ -1,4 +1,4 @@
-package domain.facade.rs;
+package model.facade.rs;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import domain.facade.ws.LivroFacade;
 import model.dao.LivroDao;
 import model.domain.Livro;
+import model.facade.ws.LivroFacade;
 
 @Path("/livro")
 @Consumes({MediaType.APPLICATION_JSON,

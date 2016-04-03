@@ -1,4 +1,4 @@
-package domain.facade.ws;
+package model.facade.ws;
 
 import java.util.List;
 

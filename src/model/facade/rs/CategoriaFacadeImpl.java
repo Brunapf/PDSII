@@ -1,4 +1,4 @@
-package domain.facade.rs;
+package model.facade.rs;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import domain.facade.ws.CategoriaFacade;
 import model.dao.CategoriaDao;
 import model.domain.Categoria;
+import model.facade.ws.CategoriaFacade;
 
 @Path("/categoria")
 @Consumes({MediaType.APPLICATION_JSON,

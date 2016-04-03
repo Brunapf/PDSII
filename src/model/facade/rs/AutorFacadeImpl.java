@@ -1,4 +1,4 @@
-package domain.facade.rs;
+package model.facade.rs;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import domain.facade.ws.AutorFacade;
 import model.dao.AutorDao;
 import model.domain.Autor;
+import model.facade.ws.AutorFacade;
 
 @Path("/autor")
 @Consumes({MediaType.APPLICATION_JSON,
