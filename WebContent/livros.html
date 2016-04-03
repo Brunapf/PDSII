@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="livroModule">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Sistema Biblioteca</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	  <script src="js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="controll/livroControl.js"></script>
+  </head>
+<body ng-controller="livroControl">
+  
+
+    
+    
+  <div ng-include="'menu.html'"></div>
+
+  <div class="panel panel-default">
+  <div class="panel-heading">Cadastro de Livros</div>
+  <div class="panel-body " >
+    <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cadastro</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados</a></li>
+    
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active espaco_entre_botoes" id="home" >
+
+<form class="form-horizontal">
+   <button type="submit"  ng-click="novo();" class="btn btn-primary">Novo</button>
+  <button type="submit"  ng-click="salvar();" class="btn btn-success">Cadastrar</button>
+  <button type="submit"  ng-click="pesquisar();" class="btn btn-warning">Pesquisar</button>
+  <button type="submit"  ng-click="excluir();" class="btn btn-danger">Excluir</button>
+
+
+
+  <div class="form-group espaco_entre_botoes" >
+    <label for="exampleInputcodigo" class="col-sm-1 control-label">Código</label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control" ng-model="livro.codigo" disabled="true" placeholder="Codigo">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputnome" class="col-sm-1 control-label">Nome</label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control"  ng-model="livro.nome"placeholder="Nome">
+  </div>
+</div>
+  <div class="form-group">
+    <label for="exampleInputendereco" class="col-sm-1 control-label">Descrição</label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control"  ng-model="livro.descricao"placeholder="Descrição">
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputcidade" class="col-sm-1 control-label">Quantidade Paginas</label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control"  ng-model="livro.quantidade"placeholder="Quantidade paginas">
+  </div>
+</div>
+  <div class="form-group">
+    <label for="exampleInput" class="col-sm-1 control-label">Autor</label>
+    <div class="col-sm-5">
+      <select class="form-control"
+      ng-model="livro.autor"
+      ng-options="autor.nome for autor in autores track by autor.codigo">
+
+
+      </select>
+  </div>
+</div>
+  
+  <div class="form-group">
+    <label for="exampleInput" class="col-sm-1 control-label">Categoria</label>
+    <div class="col-sm-5">
+      <select class="form-control"
+      ng-model="livro.categoria"
+      ng-options="categoria.nome for categoria in categorias track by categoria.codigo">
+
+
+      </select>
+  </div>
+</div>
+
+
+
+<div class="form-group">
+    <label for="exampleInput" class="col-sm-1 control-label">Editora</label>
+    <div class="col-sm-5">
+      <select class="form-control"
+      ng-model="livro.editora"
+      ng-options="editora.nome for editora in editoras track by editora.codigo">
+
+
+
+      </select>
+  </div>
+</div>
+
+
+
+</form>
+
+    </div>
+
+    <!-- Segunda aba "dados" -->
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+
+<table class="table table-striped">
+  <!-- th vai ser o nome dos campos da minha tabela -->
+ <th> Código </th>
+ <th> Nome </th>
+ <th> Descrição </th>
+ <th> Quantidade Páginas </th>
+ <th> Autor </th>
+ <th> Categoria </th>
+ <th>Editora </th>
+ 
+<!-- nas tags tr eu vou colocar quais campos vao ser inseridos na minha tabela para isso vai ser usado o angularjs -->
+  <tr ng-repeat="livroTabela in livros" ng-click="selecionaLivro(livroTabela);">
+    <td>{{livroTabela.codigo}}</td>
+    <td>{{livroTabela.nome}}</td>
+    <td>{{livroTabela.descricao}}</td>
+    <td>{{livroTabela.quantidade}}</td>
+    <td>{{livroTabela.autor.nome}}</td>
+    <td>{{livroTabela.categoria.nome}}</td>
+    <td>{{livroTabela.editora.nome}}</td>
+  
+  </tr>
+</table>
+
+
+
+
+    </div>
+    
+  </div>
+
+</div>
+
+
+  </div>
+</div>
+</div>
+
+
+</body>
+</html>
