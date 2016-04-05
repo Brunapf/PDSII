@@ -15,16 +15,9 @@ public class AutorDaoImpl implements AutorDao{
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Autor> getautores(Autor autor) {
-		StringBuffer hql = new StringBuffer("from Autor c"
-				+ " where 1 = 1");		
-		if (autor.getCodigo() != null) {
-			hql.append(" and c.codigo = :codigo");
-		}
-		Query query = entityManager.createQuery(hql.toString());
-		if (autor.getCodigo() != null) {
-			query.setParameter("codigo",autor.getCodigo());
-		} 
+	public List<Autor> getautores() {
+	javax.persistence.Query query = entityManager.createQuery("from Autor");
+		
 		return query.getResultList();
 	}
 	

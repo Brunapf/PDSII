@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import model.dao.AutorDao;
 import model.domain.Autor;
 import model.facade.ws.AutorFacade;
+import model.service.AutorService;
 
 @Path("/autor")
 @Consumes({MediaType.APPLICATION_JSON,
@@ -25,32 +26,32 @@ import model.facade.ws.AutorFacade;
 public class AutorFacadeImpl implements AutorFacade {
 	
 	@Inject
-	private AutorDao autorDao;
+	private AutorService autorService;
+	
 
 	
 	@Override
 	@POST
 	public Autor salvar(Autor autor) {
-		autor = autorDao.salvar(autor);
-		return autor;
+		return autorService.salvar(autor);
 	}
 	
 	
 	@Override
 	@GET
 	public List<Autor> getAutores() {
-		return autorDao.getautores(new Autor());
+		return autorService.getAutores();
 	}
 	
 	
-	@Override
-	@GET
-	@Path("/{codigo}")
-	public List<Autor>  getAutores(@PathParam("codigo") Integer codigo) {
-		Autor autor = new Autor();
-		autor.setCodigo(codigo);
-		return autorDao.getautores(autor);		
-	}
+	//@Override
+	//@GET
+	//@Path("/{codigo}")
+	//public List<Autor>  getAutores(@PathParam("codigo") Integer codigo) {
+	//	Autor autor = new Autor();
+	//	autor.setCodigo(codigo);
+	//	return autorDao.getautores(autor);		
+	//}
 	
 	
 	
@@ -61,7 +62,7 @@ public class AutorFacadeImpl implements AutorFacade {
 		
 			Autor autor = new Autor();
 			autor.setCodigo(codigo);
-			autorDao.excluir(autor);
+			autorService.excluir(autor);
 			
 	}
 
@@ -69,7 +70,7 @@ public class AutorFacadeImpl implements AutorFacade {
 	@Override
 	@PUT
 	public void atualizar(Autor autor){
-		autorDao.atualizar(autor);
+		autorService.atualizar(autor);
 	}
 
 	

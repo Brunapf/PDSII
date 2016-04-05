@@ -20,17 +20,17 @@ public class AutorFacadeImpl implements AutorFacade {
 	@Override
 	@WebMethod
 	public List<Autor> getAutores() {
-		return autorDao.getautores(new Autor());
+		return autorDao.getautores();
 	}
 	
-	@Override
-	@WebMethod(operationName="getautorsParametro")
-	public List<Autor> getAutores(Integer codigo) {
-		Autor autor = new Autor();
-		autor.setCodigo(codigo);
-		return autorDao.getautores(autor);
+	//@Override
+	//@WebMethod(operationName="getautorsParametro")
+	//public List<Autor> getAutores(Integer codigo) {
+	//	Autor autor = new Autor();
+	//	autor.setCodigo(codigo);
+	//	return autorDao.getautores(autor);
 
-	}
+	//}
 	
 	
 	@Override

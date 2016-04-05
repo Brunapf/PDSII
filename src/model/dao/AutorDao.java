@@ -6,7 +6,7 @@ import model.domain.Autor;
 
 public interface AutorDao {
 
-	List<Autor> getautores(Autor autor);
+	List<Autor> getautores();
 
 	public void excluir(Autor autor);
 	

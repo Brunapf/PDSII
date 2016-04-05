@@ -10,7 +10,7 @@ public interface AutorFacade {
 
 	List<Autor> getAutores();
 
-	List<Autor> getAutores(Integer autor);
+	//List<Autor> getAutores(Integer autor);
 
 	Autor salvar(Autor autor);
 
