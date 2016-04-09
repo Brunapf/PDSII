@@ -9,7 +9,7 @@ public interface LivroFacade {
 
 	List<Livro> getLivros();
 
-	List<Livro> getLivros(Integer livro);
+	//List<Livro> getLivros(Integer livro);
 
 	Livro salvar(Livro livro);
 

@@ -15,7 +15,9 @@ import javax.ws.rs.core.MediaType;
 
 import model.dao.LivroDao;
 import model.domain.Livro;
+import model.domain.Livro;
 import model.facade.ws.LivroFacade;
+import model.service.LivroService;
 
 @Path("/livro")
 @Consumes({MediaType.APPLICATION_JSON,
@@ -25,32 +27,32 @@ import model.facade.ws.LivroFacade;
 public class LivroFacadeImpl implements LivroFacade {
 	
 	@Inject
-	private LivroDao livroDao;
+	private LivroService livroService;
+	
 
 	
 	@Override
 	@POST
 	public Livro salvar(Livro livro) {
-		livro = livroDao.salvar(livro);
-		return livro;
+		return livroService.salvar(livro);
 	}
 	
 	
 	@Override
 	@GET
 	public List<Livro> getLivros() {
-		return livroDao.getlivros(new Livro());
+		return livroService.getLivros();
 	}
 	
 	
-	@Override
-	@GET
-	@Path("/{codigo}")
-	public List<Livro>  getLivros(@PathParam("codigo") Integer codigo) {
-		Livro livro = new Livro();
-		livro.setCodigo(codigo);
-		return livroDao.getlivros(livro);		
-	}
+	//@Override
+	//@GET
+	//@Path("/{codigo}")
+	//public List<livro>  getlivroes(@PathParam("codigo") Integer codigo) {
+	//	livro livro = new livro();
+	//	livro.setCodigo(codigo);
+	//	return livroDao.getlivroes(livro);		
+	//}
 	
 	
 	
@@ -59,9 +61,9 @@ public class LivroFacadeImpl implements LivroFacade {
 	@Path("/{codigo}")
 	public void deletarLivro(@PathParam("codigo") Integer codigo) {
 		
-			Livro livro = new Livro();
+		Livro livro = new Livro();
 			livro.setCodigo(codigo);
-			livroDao.excluir(livro);
+			livroService.excluir(livro);
 			
 	}
 
@@ -69,8 +71,7 @@ public class LivroFacadeImpl implements LivroFacade {
 	@Override
 	@PUT
 	public void atualizar(Livro livro){
-		livroDao.atualizar(livro);
+		livroService.atualizar(livro);
 	}
-
 	
 }

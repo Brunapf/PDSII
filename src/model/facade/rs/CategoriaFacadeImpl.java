@@ -13,9 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import model.dao.CategoriaDao;
 import model.domain.Categoria;
 import model.facade.ws.CategoriaFacade;
+import model.service.CategoriaService;
 
 @Path("/categoria")
 @Consumes({MediaType.APPLICATION_JSON,
@@ -25,32 +25,32 @@ import model.facade.ws.CategoriaFacade;
 public class CategoriaFacadeImpl implements CategoriaFacade {
 	
 	@Inject
-	private CategoriaDao categoriaDao;
+	private CategoriaService categoriaService;
+	
 
 	
 	@Override
 	@POST
 	public Categoria salvar(Categoria categoria) {
-		categoria = categoriaDao.salvar(categoria);
-		return categoria;
+		return categoriaService.salvar(categoria);
 	}
 	
 	
 	@Override
 	@GET
 	public List<Categoria> getCategorias() {
-		return categoriaDao.getcategorias(new Categoria());
+		return categoriaService.getCategorias();
 	}
 	
 	
-	@Override
-	@GET
-	@Path("/{codigo}")
-	public List<Categoria>  getCategorias(@PathParam("codigo") Integer codigo) {
-		Categoria categoria = new Categoria();
-		categoria.setCodigo(codigo);
-		return categoriaDao.getcategorias(categoria);		
-	}
+	//@Override
+	//@GET
+	//@Path("/{codigo}")
+	//public List<categoria>  getcategoriaes(@PathParam("codigo") Integer codigo) {
+	//	categoria categoria = new categoria();
+	//	categoria.setCodigo(codigo);
+	//	return categoriaDao.getcategoriaes(categoria);		
+	//}
 	
 	
 	
@@ -59,9 +59,9 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 	@Path("/{codigo}")
 	public void deletarCategoria(@PathParam("codigo") Integer codigo) {
 		
-		Categoria categoria = new Categoria();
+			Categoria categoria = new Categoria();
 			categoria.setCodigo(codigo);
-			categoriaDao.excluir(categoria);
+			categoriaService.excluir(categoria);
 			
 	}
 
@@ -69,7 +69,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 	@Override
 	@PUT
 	public void atualizar(Categoria categoria){
-		categoriaDao.atualizar(categoria);
+		categoriaService.atualizar(categoria);
 	}
 
 	

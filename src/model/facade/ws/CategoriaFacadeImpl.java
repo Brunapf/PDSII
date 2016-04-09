@@ -20,9 +20,9 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 	@Override
 	@WebMethod
 	public List<Categoria> getCategorias() {
-		return categoriaDao.getcategorias(new Categoria());
+		return categoriaDao.getCategorias();
 	}
-	
+	/*
 	@Override
 	@WebMethod(operationName="getcategoriasParametro")
 	public List<Categoria> getCategorias(Integer codigo) {
@@ -31,7 +31,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 		return categoriaDao.getcategorias(categoria);
 
 	}
-	
+	*/
 	
 	@Override
 	@WebMethod

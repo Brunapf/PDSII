@@ -9,7 +9,7 @@ public interface CategoriaFacade {
 
 	List<Categoria> getCategorias();
 
-	List<Categoria> getCategorias(Integer categoria);
+	//List<Categoria> getCategorias(Integer categoria);
 
 	Categoria salvar(Categoria categoria);
 

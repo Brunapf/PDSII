@@ -18,9 +18,10 @@ public class EditoraFacadeImpl implements EditoraFacade{
 	@Override
 	@WebMethod
 	public List<Editora> getEditoras() {
-		return editoraDao.geteditoras(new Editora());
+		return editoraDao.getEditoras();
 	}
 	
+	/*
 	@Override
 	@WebMethod(operationName="geteditorasParametro")
 	public List<Editora> getEditoras(Integer codigo) {
@@ -30,7 +31,7 @@ public class EditoraFacadeImpl implements EditoraFacade{
 
 	}
 	
-	
+	*/
 	@Override
 	@WebMethod
 	public Editora salvar(Editora editora) {

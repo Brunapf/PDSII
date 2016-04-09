@@ -1,5 +1,4 @@
 package model.dao;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,25 +7,17 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import model.domain.Categoria;
-
 public class CategoriaDaoImpl implements CategoriaDao{
 
 
-	@PersistenceContext(unitName="SistemaBiblioteca")
+	@PersistenceContext(unitName="PDSII")
 	private EntityManager entityManager;
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Categoria> getcategorias(Categoria categoria) {
-		StringBuffer hql = new StringBuffer("from categoria c"
-				+ " where 1 = 1");		
-		if (categoria.getCodigo() != null) {
-			hql.append(" and c.codigo = :codigo");
-		}
-		Query query = entityManager.createQuery(hql.toString());
-		if (categoria.getCodigo() != null) {
-			query.setParameter("codigo",categoria.getCodigo());
-		} 
+	public List<Categoria> getCategorias() {
+		Query query = entityManager.createQuery("from categoria");
+
 		return query.getResultList();
 	}
 	

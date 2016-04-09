@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import model.dao.EditoraDao;
 import model.domain.Editora;
 import model.facade.ws.EditoraFacade;
+import model.service.EditoraService;
 
 @Path("/editora")
 @Consumes({MediaType.APPLICATION_JSON,
@@ -25,32 +26,32 @@ import model.facade.ws.EditoraFacade;
 public class EditoraFacadeImpl implements EditoraFacade {
 	
 	@Inject
-	private EditoraDao editoraDao;
+	private EditoraService editoraService;
+	
 
 	
 	@Override
 	@POST
 	public Editora salvar(Editora editora) {
-		editora = editoraDao.salvar(editora);
-		return editora;
+		return editoraService.salvar(editora);
 	}
 	
 	
 	@Override
 	@GET
 	public List<Editora> getEditoras() {
-		return editoraDao.geteditoras(new Editora());
+		return editoraService.getEditoras();
 	}
 	
 	
-	@Override
-	@GET
-	@Path("/{codigo}")
-	public List<Editora>  getEditoras(@PathParam("codigo") Integer codigo) {
-		Editora editora = new Editora();
-		editora.setCodigo(codigo);
-		return editoraDao.geteditoras(editora);		
-	}
+	//@Override
+	//@GET
+	//@Path("/{codigo}")
+	//public List<editora>  geteditoraes(@PathParam("codigo") Integer codigo) {
+	//	editora editora = new editora();
+	//	editora.setCodigo(codigo);
+	//	return editoraDao.geteditoraes(editora);		
+	//}
 	
 	
 	
@@ -59,9 +60,9 @@ public class EditoraFacadeImpl implements EditoraFacade {
 	@Path("/{codigo}")
 	public void deletarEditora(@PathParam("codigo") Integer codigo) {
 		
-			Editora editora = new Editora();
+		Editora editora = new Editora();
 			editora.setCodigo(codigo);
-			editoraDao.excluir(editora);
+			editoraService.excluir(editora);
 			
 	}
 
@@ -69,7 +70,7 @@ public class EditoraFacadeImpl implements EditoraFacade {
 	@Override
 	@PUT
 	public void atualizar(Editora editora){
-		editoraDao.atualizar(editora);
+		editoraService.atualizar(editora);
 	}
 
 	

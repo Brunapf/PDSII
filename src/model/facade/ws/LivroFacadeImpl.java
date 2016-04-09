@@ -20,9 +20,9 @@ public class LivroFacadeImpl implements LivroFacade{
 	@Override
 	@WebMethod
 	public List<Livro> getLivros() {
-		return livroDao.getlivros(new Livro());
+		return livroDao.getLivros();
 	}
-	
+	/*
 	@Override
 	@WebMethod(operationName="getlivrosParametro")
 	public List<Livro> getLivros(Integer codigo) {
@@ -32,7 +32,7 @@ public class LivroFacadeImpl implements LivroFacade{
 
 	}
 	
-	
+	*/
 	@Override
 	@WebMethod
 	public Livro salvar(Livro livro) {

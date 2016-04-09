@@ -1,5 +1,4 @@
 package model.dao;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,21 +9,15 @@ import javax.transaction.Transactional;
 import model.domain.Livro;
 public class LivroDaoImpl implements LivroDao{
 
-	@PersistenceContext(unitName="SistemaBiblioteca")
+
+	@PersistenceContext(unitName="PDSII")
 	private EntityManager entityManager;
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Livro> getlivros(Livro livro) {
-		StringBuffer hql = new StringBuffer("from livro c"
-				+ " where 1 = 1");		
-		if (livro.getCodigo() != null) {
-			hql.append(" and c.codigo = :codigo");
-		}
-		Query query = entityManager.createQuery(hql.toString());
-		if (livro.getCodigo() != null) {
-			query.setParameter("codigo",livro.getCodigo());
-		} 
+	public List<Livro> getLivros() {
+	javax.persistence.Query query = entityManager.createQuery("from TB_LIVRO");
+		
 		return query.getResultList();
 	}
 	

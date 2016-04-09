@@ -10,7 +10,7 @@ public interface EditoraFacade {
 
 	List<Editora> getEditoras();
 
-	List<Editora> getEditoras(Integer editora);
+	//List<Editora> getEditoras(Integer editora);
 
 	Editora salvar(Editora editora);
 

@@ -14,7 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 @Entity
 @Table(name="TB_LIVRO")
 public class Livro implements Serializable{
@@ -42,17 +43,11 @@ public class Livro implements Serializable{
 	@JoinColumn(name="CD_CATEGORIA",referencedColumnName="CD_CATEGORIA")
 	private Categoria categorias;
 	
-	@ManyToMany
-	@JoinTable(name="TB_AUTOR")
-	private List<Autor> autores;
 	
 	@ManyToOne
 	@JoinColumn(name="CD_EDITORA",referencedColumnName="CD_EDITORA")
 	private Editora editoras;
 	
-	@ManyToMany
-	@JoinTable(name="TB_EMPRESTIMO")
-	private List<Emprestimo> emprestimos;
 	
 	public Livro(){
 		
@@ -67,8 +62,8 @@ public class Livro implements Serializable{
 		this.paginas = paginas;
 		this.categorias = categorias;
 		this.editoras = editoras;
-		this.emprestimos =  new ArrayList<Emprestimo>();
-		this.autores =  new ArrayList<Autor>();
+		
+		
 	}
 
 	public Integer getCodigo() {
@@ -111,13 +106,7 @@ public class Livro implements Serializable{
 		this.categorias = categorias;
 	}
 
-	public List<Autor> getAutores() {
-		return autores;
-	}
-
-	public void setAutores(List<Autor> autores) {
-		this.autores = autores;
-	}
+	
 
 	public Editora getEditoras() {
 		return editoras;
@@ -127,30 +116,10 @@ public class Livro implements Serializable{
 		this.editoras = editoras;
 	}
 
-	public List<Emprestimo> getEmprestimos() {
-		return emprestimos;
-	}
-
-	public void setEmprestimos(List<Emprestimo> emprestimos) {
-		this.emprestimos = emprestimos;
-	}
-
-	public void addautor(Autor x){
-		this.autores.add(x);
-		}
-
-	public void removeautor(Autor x){
-		this.autores.remove(x);
-		}
 	
-	public void addEmprestimo(Emprestimo  x){
-		this.emprestimos.add(x);
-		}
-
-	public void removeEmprestimo(Emprestimo x){
-		this.emprestimos.remove(x);
-		}
 	
+	
+		
 	@Override
 	public String toString() {
 		return "Livro [codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + ", paginas=" + paginas + "]";

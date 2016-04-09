@@ -6,7 +6,7 @@ import model.domain.Categoria;
 
 public interface CategoriaDao {
 
-	List<Categoria> getcategorias(Categoria categoria);
+	List<Categoria> getCategorias();
 
 	public void excluir(Categoria categoria);
 	

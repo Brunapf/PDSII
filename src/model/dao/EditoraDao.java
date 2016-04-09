@@ -6,7 +6,7 @@ import model.domain.Editora;
 
 public interface EditoraDao {
 
-	List<Editora> geteditoras(Editora categoria);
+	List<Editora> getEditoras();
 
 	public void excluir(Editora categoria);
 	

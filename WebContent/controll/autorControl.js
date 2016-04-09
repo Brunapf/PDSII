@@ -8,7 +8,7 @@ autorModule.controller("autorControl",function($scope,$http) {
 
 
 $scope.pesquisarAutor = function(){
-	$http.get(urlAutor).sucess(function(autores){
+	$http.get(urlAutor).success(function(autores){
 		$scope.autores = autores;
 	}).error(function(erro){
 	alert(erro);
@@ -16,22 +16,22 @@ $scope.pesquisarAutor = function(){
 
 
 
-
+/*
 // colocar o novo salvar nos outros
 	$scope.salvar = function(){
 		if($scope.autor.codigo == ''){
-			$http.post(urlAutor,$scope.autor.sucess(function(autor){
+			$http.post(urlAutor,$scope.autor.success(function(autor){
 				$scope.autores.push($scope.autor);
 				$scope.novo();
-			}).error(function erro){
+			}).error(function (erro){
 				alert(erro);
 
 			});
 		} else{
-			$http.put(urlAutor,$scope.autor.sucess(function(autor){
+			$http.put(urlAutor,$scope.autor.success(function(autor){
 				$scope.pesquisarAutor();
 				$scope.novo();
-			}).error(function erro){
+			}).error(function (erro){
 				alert(erro);
 
 			});
@@ -43,9 +43,9 @@ $scope.pesquisarAutor = function(){
 	
 
 }
-
+*/
 // colocar o novo excluir nos outros
-$scope.excluir = function(){
+/*$scope.excluir = function(){
 	if($scope.autor.codigo == ''){
 		alert('Selecione um autor');
 	}
@@ -60,7 +60,7 @@ $scope.excluir = function(){
 	}
 
 }
-
+*/
 $scope.novo = function(){
 	$scope.autor = "";
 }
@@ -70,5 +70,5 @@ $scope.selecionaAutor = function(autor){
 }
 
 $scope.pesquisarAutor();
-
+}
 });

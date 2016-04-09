@@ -5,23 +5,22 @@ livroModule.controller("livroControl",function($scope,$http) {
 
 
 
-urlLivro = 'http://localhost:8080/PDSII/rs/livro';
-
-urlAutor = 'http://localhost:8080/PDSII/rs/autor';
+urlautor = 'http://localhost:8080/PDSII/rs/autor';
+urlLivro = 'http://localhost:8080/PDSII/rs/livror';
 urlCategoria = 'http://localhost:8080/PDSII/rs/categoria';
 urlEditora = 'http://localhost:8080/PDSII/rs/editora';
 
 
-$scope.pesquisarLivro = function(){
-	$http.get(urlLivro).sucess(function(livros){
-		$scope.livros = livros;
+$scope.pesquisarAutor = function(){
+	$http.get(urlAutor).sucess(function(autores){
+		$scope.autores = autores;
 	}).error(function(erro){
 	alert(erro);
 });
 
-$scope.pesquisarAutor = function(){
-	$http.get(urlAutor).sucess(function(autores){
-		$scope.autores = autores;
+$scope.pesquisarLivro = function(){
+	$http.get(urlLivro).sucess(function(livrores){
+		$scope.livrores = livrores;
 	}).error(function(erro){
 	alert(erro);
 });
@@ -43,21 +42,15 @@ $scope.pesquisarEditora = function(){
 
 
 
-$scope.livros = [
-	{codigo:1, nome:'livro1',descricao:'nada',quantidade:242,autor:{codigo:1, nome:'autor1'},categoria:{codigo:1, nome:'Terror'},editora:{codigo:2, nome:'Nova Era'}},
-	{codigo:2, nome:'livro2',descricao:'grege',quantidade:434, autor: {codigo:2, nome:'autor2'},categoria:{codigo:1, nome:'Terror'},editora:{codigo:1, nome:'Abril'}}
-
-
-];
 
 	
 
-$scope.selecionaLivro = function(livro){
-	$scope.livro = livro;
+$scope.selecionaAutor = function(autor){
+	$scope.autor = autor;
 }
 
-$scope.selecionaAutor = function(autor){
-	$scope.livro.autor = autor;
+$scope.selecionaLivro = function(livror){
+	$scope.livro.livror = livror;
 }
 
 $scope.selecionaCategoria = function(categoria){
@@ -68,15 +61,50 @@ $scope.selecionaEditora = function(editora){
 }
 
 
+$scope.salvar = function(){
+	if($scope.livro.codigo == ''){
+		$http.post(urlLivro,$scope.livro.sucess(function(livro){
+			$scope.livros.push($scope.livro);
+			$scope.novo();
+		}).error(function erro){
+			alert(erro);
 
+		});
+	} else{
+		$http.put(urlLivro,$scope.livror.sucess(function(livro){
+			$scope.pesquisarLivro();
+			$scope.novo();
+		}).error(function erro){
+			alert(erro);
+
+		});
+
+	}
+
+
+
+
+
+}
 
 
 	
 
 
 $scope.excluir = function(){
-	$scope.livros.splice($scope.livros.indexOf($scope.livro),1);
-	$scope.novo();
+	if($scope.livro.codigo == ''){
+		alert('Selecione um livro');
+	}
+	else{
+		urlExcluir = urlLivro + "/" + $scope.livro.codigo;
+		$http.delete(urlExcluir).sucess(function(){
+			$scope.pesquisarLivro();
+			$scope.novo();
+		}).error(function (erro){
+			alert(erro);
+		});
+	}
+
 }
 
 $scope.novo = function(){
