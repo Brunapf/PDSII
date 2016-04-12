@@ -16,7 +16,7 @@ public class LivroDaoImpl implements LivroDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Livro> getLivros() {
-	javax.persistence.Query query = entityManager.createQuery("from TB_LIVRO");
+	javax.persistence.Query query = entityManager.createQuery("from Livro");
 		
 		return query.getResultList();
 	}

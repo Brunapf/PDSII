@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import model.dao.CategoriaDao;
 import model.domain.Categoria;
 import model.facade.ws.CategoriaFacade;
 import model.service.CategoriaService;
@@ -27,6 +28,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 	@Inject
 	private CategoriaService categoriaService;
 	
+	private CategoriaDao categoriaDao;
 
 	
 	@Override
@@ -43,14 +45,14 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 	}
 	
 	
-	//@Override
-	//@GET
-	//@Path("/{codigo}")
-	//public List<categoria>  getcategoriaes(@PathParam("codigo") Integer codigo) {
-	//	categoria categoria = new categoria();
-	//	categoria.setCodigo(codigo);
-	//	return categoriaDao.getcategoriaes(categoria);		
-	//}
+	@Override
+	@GET
+	@Path("/{codigo}")
+	public List<Categoria> getCategorias(@PathParam("codigo") Integer codigo) {
+		Categoria categoria = new Categoria();
+		categoria.setCodigo(codigo);
+		return categoriaDao.getCategorias(categoria);	
+	}
 	
 	
 	

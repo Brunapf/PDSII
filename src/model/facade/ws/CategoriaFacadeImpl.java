@@ -8,6 +8,7 @@ import javax.jws.WebService;
 
 import model.dao.CategoriaDao;
 import model.domain.Categoria;
+
 @WebService(serviceName="ws/categoria")
 public class CategoriaFacadeImpl implements CategoriaFacade{
 
@@ -20,18 +21,18 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 	@Override
 	@WebMethod
 	public List<Categoria> getCategorias() {
-		return categoriaDao.getCategorias();
+		return categoriaDao.getCategorias(new Categoria());
 	}
-	/*
+	
 	@Override
-	@WebMethod(operationName="getcategoriasParametro")
+	@WebMethod(operationName="getCategoriaParametro")
 	public List<Categoria> getCategorias(Integer codigo) {
 		Categoria categoria = new Categoria();
 		categoria.setCodigo(codigo);
-		return categoriaDao.getcategorias(categoria);
+		return categoriaDao.getCategorias(categoria);
 
 	}
-	*/
+	
 	
 	@Override
 	@WebMethod
@@ -39,6 +40,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 		return categoriaDao.salvar(categoria);
 
 	}
+	
 	
 	
 	@Override

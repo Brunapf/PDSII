@@ -47,10 +47,10 @@ public class EditoraFacadeImpl implements EditoraFacade {
 	//@Override
 	//@GET
 	//@Path("/{codigo}")
-	//public List<editora>  geteditoraes(@PathParam("codigo") Integer codigo) {
-	//	editora editora = new editora();
-	//	editora.setCodigo(codigo);
-	//	return editoraDao.geteditoraes(editora);		
+	//public List<Editora>  getEditoras(@PathParam("codigo") Integer codigo) {
+		//Editora editora = new Editora();
+		//editora.setCodigo(codigo);
+		//return editoraService.geteditoraes(editora);		
 	//}
 	
 	

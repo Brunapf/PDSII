@@ -2,11 +2,13 @@ package model.dao;
 
 import java.util.List;
 
+
 import model.domain.Categoria;
 
 public interface CategoriaDao {
 
-	List<Categoria> getCategorias();
+		
+	public List<Categoria> getCategorias(Categoria categoria);
 
 	public void excluir(Categoria categoria);
 	

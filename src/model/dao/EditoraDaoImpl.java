@@ -16,7 +16,7 @@ public class EditoraDaoImpl implements EditoraDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Editora> getEditoras() {
-	javax.persistence.Query query = entityManager.createQuery("from tb_editora");
+	javax.persistence.Query query = entityManager.createQuery("from Editora");
 		
 		return query.getResultList();
 	}

@@ -19,8 +19,15 @@ public class CategoriaServiceImpl implements CategoriaService  {
 	
 	@Override
 	public List<Categoria> getCategorias() {
-		return categoriaDaoImpl.getCategorias();
+		return categoriaDaoImpl.getCategorias(new Categoria());
 	}
+	
+	public List<Categoria> getCategorias(Integer codigo){
+		Categoria categoria = new Categoria();
+		categoria.setCodigo(codigo);
+		return categoriaDaoImpl.getCategorias(categoria);
+	}
+
 
 	
 	/* (non-Javadoc)
