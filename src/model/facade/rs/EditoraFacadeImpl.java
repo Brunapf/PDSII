@@ -13,7 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import model.dao.CategoriaDao;
 import model.dao.EditoraDao;
+import model.domain.Categoria;
 import model.domain.Editora;
 import model.facade.ws.EditoraFacade;
 import model.service.EditoraService;
@@ -25,53 +27,59 @@ import model.service.EditoraService;
 	   MediaType.APPLICATION_XML})
 public class EditoraFacadeImpl implements EditoraFacade {
 	
-	@Inject
-	private EditoraService editoraService;
-	
-
-	
-	@Override
-	@POST
-	public Editora salvar(Editora editora) {
-		return editoraService.salvar(editora);
-	}
-	
-	
-	@Override
-	@GET
-	public List<Editora> getEditoras() {
-		return editoraService.getEditoras();
-	}
-	
-	
-	//@Override
-	//@GET
-	//@Path("/{codigo}")
-	//public List<Editora>  getEditoras(@PathParam("codigo") Integer codigo) {
-		//Editora editora = new Editora();
-		//editora.setCodigo(codigo);
-		//return editoraService.geteditoraes(editora);		
-	//}
-	
-	
-	
-	@Override
-	@DELETE
-	@Path("/{codigo}")
-	public void deletarEditora(@PathParam("codigo") Integer codigo) {
+	//@Inject
+		//private CategoriaService editoraService;
 		
-		Editora editora = new Editora();
+		@Inject
+		private EditoraDao editoraDao;
+
+		
+		@Override
+		@POST
+		public Editora salvar(Editora editora) {
+		//	return editoraService.salvar(editora);
+			return editoraDao.salvar(editora);
+		}
+		
+		
+		@Override
+		@GET
+		public List<Editora> getEditoras() {
+			//return editoraService.getCategorias();
+			return editoraDao.getEditoras(new Editora());
+		}
+		
+		
+		@Override
+		@GET
+		@Path("/{codigo}")
+		public List<Editora> getEditoras(@PathParam("codigo") Integer codigo) {
+			Editora editora = new Editora();
 			editora.setCodigo(codigo);
-			editoraService.excluir(editora);
+			return editoraDao.getEditoras(editora);	
+		}
+		
+		
+		
+		@Override
+		@DELETE
+		@Path("/{codigo}")
+		public void deletarEditora(@PathParam("codigo") Integer codigo) {
 			
+				Editora editora = new Editora();
+				editora.setCodigo(codigo);
+			//	editoraService.excluir(editora);
+				editoraDao.excluir(editora);
+				
+		}
+
+
+		@Override
+		@PUT
+		public void atualizar(Editora editora){
+			//editoraService.atualizar(editora);
+			editoraDao.atualizar(editora);
+		}
+
+		
 	}
-
-
-	@Override
-	@PUT
-	public void atualizar(Editora editora){
-		editoraService.atualizar(editora);
-	}
-
-	
-}

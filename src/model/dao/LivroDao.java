@@ -6,7 +6,7 @@ import model.domain.Livro;
 
 public interface LivroDao {
 
-	List<Livro> getLivros();
+	public List<Livro> getLivros(Livro livro);
 
 	public void excluir(Livro livro);
 	

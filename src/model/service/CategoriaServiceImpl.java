@@ -13,9 +13,6 @@ public class CategoriaServiceImpl implements CategoriaService  {
 	@Inject
 	private CategoriaDaoImpl categoriaDaoImpl;
 	
-	/* (non-Javadoc)
-	 * @see model.service.CategoriaService#getcategoriaes()
-	 */
 	
 	@Override
 	public List<Categoria> getCategorias() {
@@ -30,9 +27,7 @@ public class CategoriaServiceImpl implements CategoriaService  {
 
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.CategoriaService#salvar(model.domain.Categoria)
-	 */
+
 	
 	@Override
 	@Transactional
@@ -41,9 +36,7 @@ public class CategoriaServiceImpl implements CategoriaService  {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.CategoriaService#excluir(model.domain.Categoria)
-	 */
+	
 	
 	@Override
 	@Transactional
@@ -53,10 +46,7 @@ public class CategoriaServiceImpl implements CategoriaService  {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.CategoriaService#atualizar(model.domain.Categoria)
-	 */
-	
+
 	@Override
 	@Transactional
 	public void atualizar(Categoria categoria) {

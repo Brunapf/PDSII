@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import model.domain.Editora;
 import model.domain.Livro;
 public class LivroDaoImpl implements LivroDao{
 
@@ -15,11 +16,20 @@ public class LivroDaoImpl implements LivroDao{
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Livro> getLivros() {
-	javax.persistence.Query query = entityManager.createQuery("from Livro");
-		
+	public List<Livro> getLivros(Livro livro) {	
+		StringBuffer hq1 = new StringBuffer("from Livro c where 1 = 1");
+		if (livro.getCodigo() != null) {
+			hq1.append(" and c.codigo = :codigo");
+		}
+
+		Query query = entityManager.createQuery(hq1.toString());
+		if (livro.getCodigo() != null) {
+			query.setParameter("codigo", livro.getCodigo());
+		}
 		return query.getResultList();
+
 	}
+
 	
 	@Override
 	@Transactional

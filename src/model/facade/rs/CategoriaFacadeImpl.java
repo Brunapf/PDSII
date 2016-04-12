@@ -25,23 +25,26 @@ import model.service.CategoriaService;
 	   MediaType.APPLICATION_XML})
 public class CategoriaFacadeImpl implements CategoriaFacade {
 	
-	@Inject
-	private CategoriaService categoriaService;
+	//@Inject
+	//private CategoriaService categoriaService;
 	
+	@Inject
 	private CategoriaDao categoriaDao;
 
 	
 	@Override
 	@POST
 	public Categoria salvar(Categoria categoria) {
-		return categoriaService.salvar(categoria);
+	//	return categoriaService.salvar(categoria);
+		return categoriaDao.salvar(categoria);
 	}
 	
 	
 	@Override
 	@GET
 	public List<Categoria> getCategorias() {
-		return categoriaService.getCategorias();
+		//return categoriaService.getCategorias();
+		return categoriaDao.getCategorias(new Categoria());
 	}
 	
 	
@@ -63,7 +66,8 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 		
 			Categoria categoria = new Categoria();
 			categoria.setCodigo(codigo);
-			categoriaService.excluir(categoria);
+		//	categoriaService.excluir(categoria);
+			categoriaDao.excluir(categoria);
 			
 	}
 
@@ -71,7 +75,8 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 	@Override
 	@PUT
 	public void atualizar(Categoria categoria){
-		categoriaService.atualizar(categoria);
+		//categoriaService.atualizar(categoria);
+		categoriaDao.atualizar(categoria);
 	}
 
 	

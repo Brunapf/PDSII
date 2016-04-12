@@ -2,15 +2,13 @@ package model.facade.ws;
 
 import java.util.List;
 
-
-
 import model.domain.Editora;
 
 public interface EditoraFacade {
 
 	List<Editora> getEditoras();
 
-	//List<Editora> getEditoras(Integer editora);
+	List<Editora> getEditoras(Integer codigo);
 
 	Editora salvar(Editora editora);
 

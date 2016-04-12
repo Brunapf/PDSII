@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import model.dao.EditoraDaoImpl;
 import model.dao.LivroDaoImpl;
+import model.domain.Editora;
 import model.domain.Livro;
 
 public class LivroServiceImpl implements LivroService {
@@ -13,19 +15,21 @@ public class LivroServiceImpl implements LivroService {
 	@Inject
 	private LivroDaoImpl livroDaoImpl;
 	
-	/* (non-Javadoc)
-	 * @see model.service.LivroService#getLivros()
-	 */
 	
 	@Override
 	public List<Livro> getLivros() {
-		return livroDaoImpl.getLivros();
+		return livroDaoImpl.getLivros(new Livro());
+	}
+	
+	public List<Livro> getLivros(Integer codigo){
+		Livro livro = new Livro();
+		livro.setCodigo(codigo);
+		return livroDaoImpl.getLivros(livro);
 	}
 
+
 	
-	/* (non-Javadoc)
-	 * @see model.service.LivroService#salvar(model.domain.Livro)
-	 */
+
 	
 	@Override
 	@Transactional
@@ -34,9 +38,7 @@ public class LivroServiceImpl implements LivroService {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.LivroService#excluir(model.domain.Livro)
-	 */
+	
 	
 	@Override
 	@Transactional
@@ -46,10 +48,7 @@ public class LivroServiceImpl implements LivroService {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.LivroService#atualizar(model.domain.Livro)
-	 */
-	
+
 	@Override
 	@Transactional
 	public void atualizar(Livro livro) {

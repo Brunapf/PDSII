@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import model.dao.CategoriaDaoImpl;
 import model.dao.EditoraDaoImpl;
+import model.domain.Categoria;
 import model.domain.Editora;
 
 public class EditoraServiceImpl implements EditoraService {
@@ -13,27 +15,21 @@ public class EditoraServiceImpl implements EditoraService {
 	@Inject
 	private EditoraDaoImpl editoraDaoImpl;
 	
-	/* (non-Javadoc)
-	 * @see model.service.editoraService#geteditoras()
-	 */
-	
-	/* (non-Javadoc)
-	 * @see model.service.EditoraService#getEditoras()
-	 */
 	
 	@Override
 	public List<Editora> getEditoras() {
-		return editoraDaoImpl.getEditoras();
+		return editoraDaoImpl.getEditoras(new Editora());
+	}
+	
+	public List<Editora> getEditoras(Integer codigo){
+		Editora editora = new Editora();
+		editora.setCodigo(codigo);
+		return editoraDaoImpl.getEditoras(editora);
 	}
 
+
 	
-	/* (non-Javadoc)
-	 * @see model.service.editoraService#salvar(model.domain.editora)
-	 */
-	
-	/* (non-Javadoc)
-	 * @see model.service.EditoraService#salvar(model.domain.Editora)
-	 */
+
 	
 	@Override
 	@Transactional
@@ -42,13 +38,7 @@ public class EditoraServiceImpl implements EditoraService {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.editoraService#excluir(model.domain.editora)
-	 */
 	
-	/* (non-Javadoc)
-	 * @see model.service.EditoraService#excluir(model.domain.Editora)
-	 */
 	
 	@Override
 	@Transactional
@@ -58,13 +48,6 @@ public class EditoraServiceImpl implements EditoraService {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see model.service.editoraService#atualizar(model.domain.editora)
-	 */
-	
-	/* (non-Javadoc)
-	 * @see model.service.EditoraService#atualizar(model.domain.Editora)
-	 */
 
 	@Override
 	@Transactional

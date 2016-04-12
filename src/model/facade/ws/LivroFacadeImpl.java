@@ -7,7 +7,9 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import model.dao.LivroDao;
+
 import model.domain.Livro;
+
 
 @WebService(serviceName="ws/livro")
 public class LivroFacadeImpl implements LivroFacade{
@@ -20,25 +22,26 @@ public class LivroFacadeImpl implements LivroFacade{
 	@Override
 	@WebMethod
 	public List<Livro> getLivros() {
-		return livroDao.getLivros();
+		return livroDao.getLivros(new Livro());
 	}
-	/*
+	
 	@Override
-	@WebMethod(operationName="getlivrosParametro")
+	@WebMethod(operationName="getLivroParametro")
 	public List<Livro> getLivros(Integer codigo) {
 		Livro livro = new Livro();
 		livro.setCodigo(codigo);
-		return livroDao.getlivros(livro);
+		return livroDao.getLivros(livro);
 
 	}
 	
-	*/
+	
 	@Override
 	@WebMethod
 	public Livro salvar(Livro livro) {
 		return livroDao.salvar(livro);
 
 	}
+	
 	
 	
 	@Override

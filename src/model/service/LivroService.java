@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import model.domain.Editora;
 import model.domain.Livro;
 
 public interface LivroService {
+
+	List<Livro> getLivros(Integer codigo);
 
 	List<Livro> getLivros();
 

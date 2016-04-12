@@ -18,26 +18,26 @@ public class EditoraFacadeImpl implements EditoraFacade{
 	@Override
 	@WebMethod
 	public List<Editora> getEditoras() {
-		return editoraDao.getEditoras();
+		return editoraDao.getEditoras(new Editora());
 	}
 	
-	/*
 	@Override
-	@WebMethod(operationName="geteditorasParametro")
+	@WebMethod(operationName="getEditoraParametro")
 	public List<Editora> getEditoras(Integer codigo) {
 		Editora editora = new Editora();
 		editora.setCodigo(codigo);
-		return editoraDao.geteditoras(editora);
+		return editoraDao.getEditoras(editora);
 
 	}
 	
-	*/
+	
 	@Override
 	@WebMethod
 	public Editora salvar(Editora editora) {
 		return editoraDao.salvar(editora);
 
 	}
+	
 	
 	
 	@Override
