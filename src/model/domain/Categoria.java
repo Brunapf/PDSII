@@ -33,8 +33,7 @@ public class Categoria implements Serializable {
 	@Column(name="DS_CATEGORIA")
 	private String descricao;
 	
-	@OneToMany(mappedBy="categorias")
-	private List<Livro> livros;
+
 
 
 	public Categoria(){
@@ -47,7 +46,7 @@ public class Categoria implements Serializable {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.livros =  new ArrayList<Livro>();
+		
 	}
 
 
@@ -81,23 +80,7 @@ public class Categoria implements Serializable {
 	}
 
 
-	public List<Livro> getLivros() {
-		return livros;
-	}
 
-
-	public void setLivros(List<Livro> livros) {
-		this.livros = livros;
-	}
-
-
-	public void addlivro(Livro  x){
-		this.livros.add(x);
-		}
-
-	public void removeAlbum(Livro x){
-		this.livros.remove(x);
-		}
 	
 	@Override
 	public String toString() {

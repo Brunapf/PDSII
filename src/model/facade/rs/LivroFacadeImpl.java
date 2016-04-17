@@ -18,7 +18,7 @@ import model.dao.LivroDao;
 
 import model.domain.Livro;
 import model.facade.ws.LivroFacade;
-import model.service.LivroService;
+
 
 @Path("/livro")
 @Consumes({MediaType.APPLICATION_JSON,

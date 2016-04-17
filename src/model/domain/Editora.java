@@ -48,8 +48,6 @@ public class Editora implements Serializable{
 	@Column(name="DS_EDITORA")
 	private String descricao;
 	
-	@OneToMany(mappedBy="editoras")
-	private List<Livro> livros;
 	
 	public Editora(){
 		
@@ -66,7 +64,7 @@ public class Editora implements Serializable{
 		this.pais = pais;
 		this.telefone = telefone;
 		this.descricao = descricao;
-		this.livros =  new ArrayList<Livro>();
+		
 	}
 
 	public Integer getCodigo() {
@@ -133,21 +131,7 @@ public class Editora implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public List<Livro> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<Livro> livros) {
-		this.livros = livros;
-	}
-
-	public void addlivro(Livro  x){
-		this.livros.add(x);
-		}
-
-	public void removeAlbum(Livro x){
-		this.livros.remove(x);
-		}
+	
 	
 	@Override
 	public String toString() {
