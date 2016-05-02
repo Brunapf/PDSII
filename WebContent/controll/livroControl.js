@@ -5,6 +5,8 @@ livroModule.controller("livroControl",function($scope,$http) {
 
 
 	urlLivro = 'http://localhost:8080/PDSII/rs/livro';
+	urlEditora = 'http://localhost:8080/PDSII/rs/editora';
+	urlCategoria = 'http://localhost:8080/PDSII/rs/categoria';
 
 
 $scope.pesquisarLivro = function(){
@@ -13,8 +15,25 @@ $scope.pesquisarLivro = function(){
 	}).error(function(erro){
 	alert(erro);
 });
-
 }
+/*
+$scope.pesquisarCategoria = function(){
+	$http.get(urlCategoria).success(function(categoria){
+		$scope.categorias = categorias;
+	}).error(function(erro){
+	alert(erro);
+});
+}
+
+$scope.pesquisarEditora = function(){
+	$http.get(urlEditora).success(function(editora){
+		$scope.editoras = editoras;
+	}).error(function(erro){
+	alert(erro);
+});
+*/
+
+
 $scope.selecionaLivro = function(livro){
 	$scope.livro = livro;
 }
@@ -37,13 +56,7 @@ $scope.salvar = function(){
 			alert(erro);
 
 		});
-
 	}
-
-
-
-
-
 }
 
 
@@ -70,5 +83,7 @@ $scope.novo = function(){
 
 
 $scope.pesquisarLivro();
+//$scope.pesquisarEditora();
+//$scope.pesquisarCatetoria();
 
 });

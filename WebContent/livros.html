@@ -12,10 +12,11 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	  <script src="js/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	  <script src="js/angular-resource.js"></script>
+   
     <script src="controll/livroControl.js"></script>
   </head>
 <body ng-controller="livroControl">
@@ -27,8 +28,9 @@
 
   <div class="panel panel-default">
   <div class="panel-heading">Cadastro de Livros</div>
-  <div class="panel-body " >
+  <div class="panel-body">
     <div>
+
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -61,53 +63,32 @@
     <input type="text" class="form-control"  ng-model="livro.nome"placeholder="Nome">
   </div>
 </div>
-  <div class="form-group">
-    <label for="exampleInputendereco" class="col-sm-1 control-label">Descrição</label>
-    <div class="col-sm-5">
-    <input type="text" class="form-control"  ng-model="livro.descricao"placeholder="Descrição">
-  </div>
-  </div>
+
   <div class="form-group">
     <label for="exampleInputcidade" class="col-sm-1 control-label">Quantidade Paginas</label>
     <div class="col-sm-5">
-    <input type="text" class="form-control"  ng-model="livro.quantidade"placeholder="Quantidade paginas">
+    <input type="text" class="form-control"  ng-model="livro.paginas"placeholder="Quantidade paginas">
   </div>
 </div>
-  <div class="form-group">
-    <label for="exampleInput" class="col-sm-1 control-label">Autor</label>
-    <div class="col-sm-5">
-      <select class="form-control"
-      ng-model="livro.autor"
-      ng-options="autor.nome for autor in autores track by autor.codigo">
 
-
-      </select>
-  </div>
-</div>
   
   <div class="form-group">
     <label for="exampleInput" class="col-sm-1 control-label">Categoria</label>
     <div class="col-sm-5">
       <select class="form-control"
-      ng-model="livro.categoria"
+      ng-model="livro.categorias"
       ng-options="categoria.nome for categoria in categorias track by categoria.codigo">
 
 
       </select>
   </div>
 </div>
-
-
-
 <div class="form-group">
     <label for="exampleInput" class="col-sm-1 control-label">Editora</label>
     <div class="col-sm-5">
       <select class="form-control"
-      ng-model="livro.editora"
+      ng-model="livro.editoras"
       ng-options="editora.nome for editora in editoras track by editora.codigo">
-
-
-
       </select>
   </div>
 </div>
@@ -126,9 +107,7 @@
   <!-- th vai ser o nome dos campos da minha tabela -->
  <th> Código </th>
  <th> Nome </th>
- <th> Descrição </th>
  <th> Quantidade Páginas </th>
- <th> Autor </th>
  <th> Categoria </th>
  <th>Editora </th>
  
@@ -136,11 +115,9 @@
   <tr ng-repeat="livroTabela in livros" ng-click="selecionaLivro(livroTabela);">
     <td>{{livroTabela.codigo}}</td>
     <td>{{livroTabela.nome}}</td>
-    <td>{{livroTabela.descricao}}</td>
-    <td>{{livroTabela.quantidade}}</td>
-    <td>{{livroTabela.autor.nome}}</td>
-    <td>{{livroTabela.categoria.nome}}</td>
-    <td>{{livroTabela.editora.nome}}</td>
+    <td>{{livroTabela.paginas}}</td>
+    <td>{{livroTabela.categorias.nome}}</td>
+    <td>{{livroTabela.editoras.nome}}</td>
   
   </tr>
 </table>

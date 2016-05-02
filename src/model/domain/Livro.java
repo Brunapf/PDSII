@@ -33,8 +33,6 @@ public class Livro implements Serializable{
 	@Column(name="NM_LIVRO")
 	private String nome;
 	
-	@Column(name="DES_PAGINAS")
-	private Integer descricao;
 	
 	@Column(name="QT_PAGINAS")
 	private Integer paginas;
@@ -58,7 +56,7 @@ public class Livro implements Serializable{
 		
 		this.codigo = codigo;
 		this.nome = nome;
-		this.descricao = descricao;
+
 		this.paginas = paginas;
 		this.categorias = categorias;
 		this.editoras = editoras;
@@ -82,13 +80,7 @@ public class Livro implements Serializable{
 		this.nome = nome;
 	}
 
-	public Integer getDescricao() {
-		return descricao;
-	}
 
-	public void setDescricao(Integer descricao) {
-		this.descricao = descricao;
-	}
 
 	public Integer getPaginas() {
 		return paginas;
@@ -122,7 +114,7 @@ public class Livro implements Serializable{
 		
 	@Override
 	public String toString() {
-		return "Livro [codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + ", paginas=" + paginas + "]";
+		return "Livro [codigo=" + codigo + ", nome=" + nome + ", paginas=" + paginas + "]";
 	}
 
 	@Override

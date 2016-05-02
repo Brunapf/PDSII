@@ -7,6 +7,7 @@ editoraModule.controller("editoraControl",function($scope,$http) {
 	urlEditora = 'http://localhost:8080/PDSII/rs/editora';
 
 
+	
 	$scope.pesquisarEditora = function(){
 		$http.get(urlEditora).success(function(editoras){
 			$scope.editoras = editoras;
