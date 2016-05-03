@@ -16,9 +16,9 @@ $scope.pesquisarLivro = function(){
 	alert(erro);
 });
 }
-/*
+
 $scope.pesquisarCategoria = function(){
-	$http.get(urlCategoria).success(function(categoria){
+	$http.get(urlCategoria).success(function(categorias){
 		$scope.categorias = categorias;
 	}).error(function(erro){
 	alert(erro);
@@ -26,13 +26,13 @@ $scope.pesquisarCategoria = function(){
 }
 
 $scope.pesquisarEditora = function(){
-	$http.get(urlEditora).success(function(editora){
+	$http.get(urlEditora).success(function(editoras){
 		$scope.editoras = editoras;
 	}).error(function(erro){
 	alert(erro);
 });
-*/
 
+}
 
 $scope.selecionaLivro = function(livro){
 	$scope.livro = livro;
@@ -83,7 +83,7 @@ $scope.novo = function(){
 
 
 $scope.pesquisarLivro();
-//$scope.pesquisarEditora();
-//$scope.pesquisarCatetoria();
+$scope.pesquisarEditora();
+$scope.pesquisarCategoria();
 
 });
