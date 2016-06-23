@@ -43,12 +43,22 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active espaco_entre_botoes" id="home" >
 
-<form class="form-horizontal">
-   <button type="submit"  ng-click="novo();" class="btn btn-primary">Novo</button>
-  <button type="submit"  ng-click="salvar();" class="btn btn-success">Cadastrar</button>
-  <button type="submit"  ng-click="pesquisar();" class="btn btn-warning">Pesquisar</button>
-  <button type="submit"  ng-click="excluir();" class="btn btn-danger">Excluir</button>
+<form name="livroForm" class="form-horizontal" ng-submit="livroForm.$valid && salvar()" novalidate>
 
+<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+<div ng-show="livroForm.$submitted">
+	<div ng-show="livroForm.nome.$error.required">Preencha o nome</div>
+	<div ng-show="livroForm.paginas.$error.required">Preencha a quantidade de paginas</div>
+	<div ng-show="livroForm.paginas.$error.min">Quantidade de paginas deve ser superior a 4</div>
+	<div ng-show="livroForm.nome.$error.minlength">O nome deve ter pelo menos 6 caracteres</div>
+
+</div>
+<br>
+   <button type="button"  ng-click="novo();" class="btn btn-primary">Novo</button>
+  <button type="submit"  class="btn btn-success">Cadastrar</button>
+  <button type="button"  ng-click="pesquisar();" class="btn btn-warning">Pesquisar</button>
+  <button type="button"  ng-click="excluir();" class="btn btn-danger">Excluir</button>
+ <hr/> 
 
 
   <div class="form-group espaco_entre_botoes" >
@@ -60,14 +70,18 @@
   <div class="form-group">
     <label for="exampleInputnome" class="col-sm-1 control-label">Nome</label>
     <div class="col-sm-5">
-    <input type="text" class="form-control"  ng-model="livro.nome"placeholder="Nome">
+    <input type="text" class="form-control"  ng-model="livro.nome"placeholder="Nome" name="nome" required="" 
+ng-minlength="6"/>
+    
   </div>
 </div>
 
   <div class="form-group">
     <label for="exampleInputcidade" class="col-sm-1 control-label">Quantidade Paginas</label>
     <div class="col-sm-5">
-    <input type="text" class="form-control"  ng-model="livro.paginas"placeholder="Quantidade paginas">
+    <input type="text" class="form-control"  ng-model="livro.paginas"placeholder="Quantidade paginas" name="paginas" required="" 
+min="5"/>
+    
   </div>
 </div>
 

@@ -4,46 +4,51 @@ var categoriaModule = angular.module('categoriaModule',[]);
 categoriaModule.controller("categoriaControl",function($scope,$http) {
 
 
-	urlCategoria = 'http://localhost:8080/PDSII/rs/categoria';
+	var urlCategoria = 'http://localhost:8080/PDSII/rs/categoria';
 
 
 	$scope.pesquisarCategoria = function(){
 		$http.get(urlCategoria).success(function(categorias){
 			$scope.categorias = categorias;
 		}).error(function(erro){
-		alert(erro);
+			$scope.mensagens.push('Erro ao pesquisar categorias '+mensagemErro);
 	});
 
 	}
+	
 	$scope.selecionaCategoria = function(categoria){
 		$scope.categoria = categoria;
 	}
 
+	$scope.montaMensagemErro = function(listaErro) {
+		$scope.mensagens = [];
+		$scope.mensagens.push('Falha de validação retornada do servidor');
+		angular.forEach(listaErro, function(value, key){
+			 $scope.mensagens.push(value.message);
+		});
+	}
 
 	$scope.salvar = function(){
-		if($scope.categoria.codigo == ''){
+		if($scope.categoria.codigo == undefined || $scope.categoria.codigo == ''){
 			$http.post(urlCategoria,$scope.categoria).success(function(categoria){
-				$scope.categorias.push($scope.categoria);
+				$scope.categorias.push(categoria);
 				$scope.novo();
+				$scope.mensagens.push('Categoria salva com sucesso');
 			}).error(function (erro){
-				alert(erro);
+				$scope.montaMensagemErro(erro.parameterViolations);
 
 			});
 		} else{
 			$http.put(urlCategoria,$scope.categoria).success(function(categoria){
 				$scope.pesquisarCategoria();
 				$scope.novo();
+				$scope.mensagens.push('Categoria atualizada com sucesso');
 			}).error(function (erro){
-				alert(erro);
+				$scope.montaMensagemErro(erro.parameterViolations);
 
 			});
 
 		}
-
-
-
-
-
 	}
 
 
@@ -57,8 +62,9 @@ categoriaModule.controller("categoriaControl",function($scope,$http) {
 			$http.delete(urlExcluir).success(function(){
 				$scope.pesquisarCategoria();
 				$scope.novo();
+				$scope.mensagens.push('Categoria excluída com sucesso');
 			}).error(function (erro){
-				alert(erro);
+				$scope.mensagens.push('Erro ao excluir categoria: '+erro);
 			});
 		}
 
@@ -70,5 +76,5 @@ categoriaModule.controller("categoriaControl",function($scope,$http) {
 
 
 	$scope.pesquisarCategoria();
-
+	$scope.novo();
 	});

@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
@@ -27,24 +30,36 @@ public class Editora implements Serializable{
 	@Column(name="CD_EDITORA")
 	private Integer codigo;
 	
+	@Size(min=5,message="Nome da Editora precisa ter pelo menos 5 caracteres")
+	@NotNull(message="O campo nome é obrigatório")
 	@Column(name="NM_EDITORA")
 	private String nome;
 	
+	@Size(min=10,message="Endereço precisa ter pelo menos 10 caracteres")
+	@NotNull(message="O campo endereço é obrigatório")
 	@Column(name="DS_ENDERECO")
 	private String endereco;
 	
+	@NotNull(message="O campo cidade é obrigatório")
 	@Column(name="DS_CIDADE")
 	private String cidade;
 	
+	@NotNull(message="O campo cep é obrigatório")
+	@Pattern(regexp="\\d{5}-\\d{3}",message="Campo CEP precisa estar no padrão 00000-000")
 	@Column(name="DS_CEP")
 	private String cep;
 
+	@NotNull(message="O campo país é obrigatório")
 	@Column(name="DS_PAIS")
 	private String pais;
 	
+	@NotNull(message="O campo telefone é obrigatório")
+	@Size(min=9,message="Descrição precisa ter pelo menos 9 caracteres")
 	@Column(name="DS_TELEFONE")
 	private String telefone;
 	
+	@NotNull
+	@Size(min=10,message="Descrição precisa ter pelo menos 10 caracteres")
 	@Column(name="DS_EDITORA")
 	private String descricao;
 	

@@ -2,6 +2,8 @@ package model.facade.ws;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
 
 import model.domain.Categoria;
 
@@ -11,7 +13,8 @@ public interface CategoriaFacade {
 
 	List<Categoria> getCategorias(Integer codigo);
 
-	Categoria salvar(Categoria categoria);
+	@ValidateOnExecution
+	Categoria salvar(@Valid Categoria categoria);
 
 	void atualizar(Categoria categoria);
 

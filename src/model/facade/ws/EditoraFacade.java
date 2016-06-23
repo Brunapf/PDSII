@@ -2,6 +2,9 @@ package model.facade.ws;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
+
 import model.domain.Editora;
 
 public interface EditoraFacade {
@@ -10,7 +13,8 @@ public interface EditoraFacade {
 
 	List<Editora> getEditoras(Integer codigo);
 
-	Editora salvar(Editora editora);
+	@ValidateOnExecution
+	Editora salvar(@Valid Editora editora);
 
 	void atualizar(Editora editora);
 

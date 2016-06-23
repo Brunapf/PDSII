@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
@@ -27,9 +29,13 @@ public class Categoria implements Serializable {
 	@Column(name="CD_CATEGORIA")
 	private Integer codigo;
 	
+	@Size(min=4,message="Nome da categoria precisa ter pelo menos 4 caracteres")
+	@NotNull(message="O campo nome da categoria é obrigatório")
 	@Column(name="NM_CATEGORIA")
 	private String nome;
 	
+	@NotNull
+	@Size(min=10,message="A descrição precisa ter pelo menos 10 caracteres")
 	@Column(name="DS_CATEGORIA")
 	private String descricao;
 	
